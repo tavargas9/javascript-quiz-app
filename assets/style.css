@@ -6,3 +6,7 @@
 .custom-bg-color1 {
   background-color: var(--theme-color-1);
 }
+
+.hide { 
+  display: none;
+}

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./assets/style.css" />
   <title>Javascript Quiz!</title>
 </head>
 <body class="">
@@ -16,47 +16,44 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" aria-current="page" href="#">View Highscores</a>
-          <a class="nav-link" href="#">Restart Quiz</a> 
+          <a class="nav-link hide" aria-current="page" href="#">View Highscores</a>
+          <a class="nav-link hide" href="#">Restart Quiz</a> 
         </div>
       </div>
     </div>
   </nav>
 
-  <div class="progress fixed-bottom" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress fixed-bottom hide" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
     <div class="progress-bar" style="width: 100%">Time left: 60s</div>
   </div>
  
 
   <div class="d-flex vh-100 justify-content-center align-items-center">
-    <div class="card shadow d-grid gap-2 col-6 mx-auto">
-      <div class="card-header d-flex justify-content-center custom-bg-color1 h4">
+    <div class="card shadow d-grid gap-2 col-6 mx-auto" id="question-container">
+      <div class="card-header d-flex justify-content-center custom-bg-color1 h4" id="question">
         Welcome to the JavaScript Quiz! Are you ready to test your knowledge of basic JavaScript concepts? 
         Click on the button below to start the quiz.
       </div>
-      <p class="final-score p-2 mx-auto">Your score is: 5 out of 5</p>
-      <div class="list-group d-grid col-9 mx-auto">
-        <button type="button" class="list-group-item list-group-item-action">The current button</button>
-        <button type="button" class="list-group-item list-group-item-action">A second button item</button>
-        <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-        <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
+      <p class="final-score p-2 mx-auto hide">Your score is: 5 out of 5</p>
+      <div class="list-group col-9 mx-auto hide" id="answer-buttons"> <!--add d-grid and remove hide-->
+       
       </div>
 
       <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="btn btn-primary" type="button">Start Quiz</button>
-        <button class="btn btn-primary" type="button">Next Question</button>
+        <button class="btn btn-primary" id="start-btn" type="button">Start Quiz</button>
+        <button class="btn btn-primary hide" id="next-btn" type="button">Next Question</button>
       </div>
 
       <div class="d-grid gap-2 col-9 mx-auto">
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success hide" id="correct-alert" role="alert">
           Correct!
         </div>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger hide" id="incorrect-alert" role="alert">
           Incorrect!
         </div>
       </div>
 
-      <div class="row d-flex flex-row col-9 justify-content-around mx-auto p-3">
+      <div class="row hide flex-row col-9 justify-content-around mx-auto p-3"> <!--add d-flex and remove hide-->
         <div class="col-9">
           <input type="text" class="form-control" placeholder="Enter initials" aria-label="First name">
         </div>
@@ -68,5 +65,6 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="./assets/script.js"></script>
 </body>
 </html>
