@@ -34,6 +34,9 @@
         Welcome to the JavaScript Quiz! Are you ready to test your knowledge of basic JavaScript concepts? 
         Click on the button below to start the quiz.
       </div>
+      <ul class="hide" id="highscores-list">
+
+      </ul>
       <p class="final-score p-2 mx-auto hide" id="final-score">Your score is: 5 out of 5</p>
       <div class="list-group col-9 mx-auto hide" id="answer-buttons"> <!--add d-grid and remove hide-->
        
@@ -53,14 +56,14 @@
         </div>
       </div>
 
-      <div class="row hide flex-row col-9 justify-content-around mx-auto p-3" id="highscore-input"> <!--add d-flex and remove hide-->
+      <form class="row hide flex-row col-9 justify-content-around mx-auto p-3" id="highscore-input"> <!--add d-flex and remove hide-->
         <div class="col-9">
-          <input type="text" class="form-control" placeholder="Enter initials" aria-label="First name">
+          <input type="text" class="form-control" id="initials" placeholder="Enter initials" aria-label="First name">
         </div>
         <div class="col-3">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-      </div>
+      </form>
 
     </div>
   </div>

@@ -9,6 +9,8 @@ var restartQuizButton = document.querySelector('#restart-quiz')
 var finalScore = document.querySelector('#final-score')
 var highScoreInput = document.querySelector('#highscore-input')
 var progressBarContainer = document.querySelector('#progressbar-container')
+var initialsInput = document.querySelector('#initals')
+var highscoresList = document.querySelector('#highscores-list')
 
 startButton.addEventListener('click', startQuiz)
 nextButton.addEventListener('click', () => {
@@ -118,10 +120,8 @@ function displayFinalScore() {
 };
 
 function startHighScoreInput() {
-  var answerButtons = document.querySelectorAll('.list-group-item', '.list-group-item-action');
-  answerButtons.forEach(button => {
-    button.classList.add('hide')
-  })
+  answersContainerEl.classList.remove('d-grid')
+  answersContainerEl.classList.add('hide')
   finalScore.classList.remove('hide')
   displayFinalScore();
   resetAlerts(correctAlert, incorrectAlert);
