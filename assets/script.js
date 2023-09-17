@@ -21,6 +21,7 @@ nextButton.addEventListener('click', () => {
 let shuffledQuestions, currentQuestionIndex
 
 function startQuiz() {
+  clearPreviousAnswers();
   startButton.classList.add('hide');
   shuffledQuestions = questions.sort(() => Math.random() - .5);
   currentQuestionIndex = 0;
@@ -112,6 +113,7 @@ function startHighScoreInput() {
   if (!nextButton.classList.contains('hide')) {
     nextButton.classList.add('hide');
   }
+  progressBarContainer.classList.add('hide');
 }
 
 function disableAnswerButtons () {
