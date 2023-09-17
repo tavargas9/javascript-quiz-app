@@ -8,6 +8,7 @@ var incorrectAlert = document.querySelector('#incorrect-alert')
 var restartQuizButton = document.querySelector('#restart-quiz')
 var finalScore = document.querySelector('#final-score')
 var highScoreInput = document.querySelector('#highscore-input')
+var progressBarContainer = document.querySelector('#progressbar-container')
 
 startButton.addEventListener('click', startQuiz)
 nextButton.addEventListener('click', () => {
@@ -26,7 +27,31 @@ function startQuiz() {
   answersContainerEl.classList.add('d-grid');
   answersContainerEl.classList.remove('hide');
   restartQuizButton.classList.remove('hide');
+  progressBarContainer.classList.remove('hide');
   setNextQuetion();
+  startTimer();
+}
+
+const timerElement = document.getElementById('timer');
+let timeLeft = 60;
+let timerInterval;
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      startHighScoreInput();
+    } else {
+      timerElement.textContent = `${timeLeft} seconds left`;
+      timeLeft--;
+      updateProgressBar();
+    }
+  }, 1000);
+}
+
+function updateProgressBar() {
+  const progress = (timeLeft / 60) * 100;
+  timerElement.style.setProperty('width', progress + '%');
 }
 
 function setNextQuetion() {
