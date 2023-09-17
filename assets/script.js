@@ -58,6 +58,9 @@ function updateProgressBar() {
 }
 
 function setNextQuetion() {
+  if (!nextButton.classList.contains('hide')) {
+    nextButton.classList.add('hide');
+  };
   showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
