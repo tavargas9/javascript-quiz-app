@@ -13,6 +13,7 @@ var initialsInput = document.querySelector('#initals')
 var highscoresList = document.querySelector('#highscores-list')
 var clearHighscoresBtn = document.querySelector('#clear-btn')
 var restartBtn = document.querySelector('#restart-btn')
+var viewHighscoresBtn = document.querySelector('#view-highscores-btn');
 
 startButton.addEventListener('click', startQuiz)
 nextButton.addEventListener('click', () => {
@@ -33,6 +34,7 @@ function startQuiz() {
   answersContainerEl.classList.remove('hide');
   restartQuizButton.classList.remove('hide');
   progressBarContainer.classList.remove('hide');
+  viewHighscoresBtn.classList.add('hide');
   setNextQuetion();
   startTimer();
 }
@@ -206,6 +208,41 @@ function clearHighScores () {
 }
 
 clearHighscoresBtn.addEventListener('click', clearHighScores);
+
+function viewHighscores() {
+  questionEl.innerText = 'Highscores:';
+  updateHighscores();
+  viewHighscoresBtn.classList.add('hide');
+  if (!finalScore.classList.contains('hide')) {
+    finalScore.classList.add('hide');
+  };
+
+  if (clearHighscoresBtn.classList.contains('hide')){
+    clearHighscoresBtn.classList.remove('hide');
+  };
+
+  if (highscoresList.classList.contains('hide')) {
+    highscoresList.classList.remove('hide');
+  };
+
+  if (!nextButton.classList.contains('hide')) {
+    nextButton.classList.add('hide');
+  };
+
+  if (!startButton.classList.contains('hide')) {
+    startButton.classList.add('hide');
+  };
+
+  if (!answerButtonsEl.classList.contains('hide')) {
+    answerButtonsEl.classList.add('hide');
+  };
+
+  if (restartBtn.classList.contains('hide')) {
+    restartBtn.classList.remove('hide');
+  };
+}
+
+viewHighscoresBtn.addEventListener('click', viewHighscores);
 
 
 const questions = [
