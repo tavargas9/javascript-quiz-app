@@ -11,6 +11,8 @@ var highScoreInput = document.querySelector('#highscore-input')
 var progressBarContainer = document.querySelector('#progressbar-container')
 var initialsInput = document.querySelector('#initals')
 var highscoresList = document.querySelector('#highscores-list')
+var clearHighscoresBtn = document.querySelector('#clear-btn')
+var restartBtn = document.querySelector('#restart-btn')
 
 startButton.addEventListener('click', startQuiz)
 nextButton.addEventListener('click', () => {
@@ -188,10 +190,22 @@ highScoreInput.addEventListener('submit', function (event) {
   updateHighscores();
   highScoreInput.classList.remove('d-flex');
   highScoreInput.classList.add('hide');
+  clearHighscoresBtn.classList.remove('hide');
+  restartBtn.classList.remove('hide');
+  finalScore.classList.add('hide');
+  questionEl.innerText = 'Highscores:'
 });
 
+function clearHighScores () {
+  highscores = [];
+  localStorage.removeItem('highscores');
+  localStorage.removeItem('quizScore');
+  highscoresList.innerHTML = '';
+  clearHighscoresBtn.classList.add('hide');
+  questionEl.innerText = 'Try again?'
+}
 
-
+clearHighscoresBtn.addEventListener('click', clearHighScores);
 
 
 const questions = [
