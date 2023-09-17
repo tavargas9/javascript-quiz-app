@@ -1,0 +1,8 @@
+:root {
+  --theme-color-1: rgb(202, 222, 239);
+  --theme-color-2: rgb(46, 53, 50);
+}
+
+.custom-bg-color1 {
+  background-color: var(--theme-color-1);
+}
