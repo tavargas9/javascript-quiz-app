@@ -6,8 +6,16 @@ var answerButtonsEl = document.querySelector('#answer-buttons')
 var correctAlert = document.querySelector('#correct-alert')
 var incorrectAlert = document.querySelector('#incorrect-alert')
 var restartQuizButton = document.querySelector('#restart-quiz')
+var finalScore = document.querySelector('#final-score')
+var highScoreInput = document.querySelector('#highscore-input')
 
 startButton.addEventListener('click', startQuiz)
+nextButton.addEventListener('click', () => {
+  resetAlerts(correctAlert, incorrectAlert);
+  clearPreviousAnswers();
+  currentQuestionIndex++;
+  setNextQuetion();
+})
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -51,7 +59,31 @@ function selectAnswer(event) {
     incorrectAlert.classList.remove('hide');
     disableAnswerButtons();
   }
-  nextButton.classList.remove('hide');
+  if (shuffledQuestions.length > currentQuestionIndex + 1){
+    nextButton.classList.remove('hide');
+  } else {
+    nextButton.classList.add('hide')
+    startHighScoreInput();
+  }
+}
+
+function clearPreviousAnswers() {
+  var answerButtons = document.querySelectorAll('.list-group-item', '.list-group-item-action');
+  answerButtons.forEach(button => {
+    button.classList.add('hide');
+  });
+}
+
+function startHighScoreInput() {
+  var answerButtons = document.querySelectorAll('.list-group-item', '.list-group-item-action');
+  answerButtons.forEach(button => {
+    button.classList.add('hide')
+  })
+  finalScore.classList.remove('hide')
+  resetAlerts(correctAlert, incorrectAlert);
+  highScoreInput.classList.remove('hide')
+  highScoreInput.classList.add('d-flex')
+  questionEl.innerText = "Add your high score!"
 }
 
 function disableAnswerButtons () {
@@ -59,6 +91,18 @@ function disableAnswerButtons () {
   answerButtons.forEach(button => {
     button.disabled = true;
   });
+}
+
+function resetAlerts (correctAlert, incorrectAlert) {
+  var answerButtons = document.querySelectorAll('.list-group-item', '.list-group-item-action');
+  answerButtons.forEach(button => {
+    button.disabled = false;
+  });
+  if (!correctAlert.classList.contains('hide')) {
+    correctAlert.classList.add('hide');
+  } else if (!incorrectAlert.classList.contains('hide')) {
+    incorrectAlert.classList.add('hide');
+  } else {};
 }
 
 const questions = [
@@ -70,8 +114,52 @@ const questions = [
       {text: '<HTML>', correct: false},
       {text: '<h1>', correct: false}
     ]
+  },
+
+  {
+    question: 'How do you create a function in JavaScript?',
+    answers: [
+      {text: 'function = myFunction()', correct: false},
+      {text: 'function: myFuction()', correct: false},
+      {text: 'function === myFunction()', correct: false},
+      {text: 'function myFunction()', correct: true}
+    ]
+  },
+
+  {
+    question: 'How do you call a function named "myFunction"?',
+    answers: [
+      {text: 'call myFunction()', correct: false},
+      {text: 'myFuction()', correct: true},
+      {text: 'open myFunction()', correct: false},
+      {text: 'run function myFunction()', correct: false}
+    ]
+  },
+
+  {
+    question: 'How to write an IF statement in JavaScript?',
+    answers: [
+      {text: 'if i is 5 then', correct: false},
+      {text: 'if i = 5', correct: false},
+      {text: 'if (i === 5)', correct: true},
+      {text: 'if i == 5 then', correct: false}
+    ]
+  },
+
+  {
+    question: 'How can you add a comment in a JavaScript?',
+    answers: [
+      {text: '"this is a comment', correct: false},
+      {text: '//this is a comment', correct: true},
+      {text: '"this is a comment"', correct: false},
+      {text: '<!--this is a comment-->', correct: false}
+    ]
   }
 ]
+
+
+
+
 
 function refreshPage() {
   location.reload();
