@@ -79,6 +79,7 @@ function selectAnswer(event) {
   if (selectedButton.dataset.correct) {
     selectedButton.classList.add('active');
     correctAlert.classList.remove('hide');
+    incrementScore();
     disableAnswerButtons();
   } else {
     selectedButton.classList.add('active');
@@ -100,12 +101,29 @@ function clearPreviousAnswers() {
   });
 }
 
+let score = 0;
+localStorage.setItem('quizScore', score.toString());
+
+function incrementScore() {
+  score += 1;
+  localStorage.setItem('quizScore', score.toString());
+};
+
+function displayFinalScore() {
+  var storedScore = localStorage.getItem('quizScore');
+  if (storedScore !== null) {
+    var finalScoreNumber = parseInt(storedScore, 10);
+    finalScore.innerText = "Your score is: " + finalScoreNumber + " out of 5";
+  };
+};
+
 function startHighScoreInput() {
   var answerButtons = document.querySelectorAll('.list-group-item', '.list-group-item-action');
   answerButtons.forEach(button => {
     button.classList.add('hide')
   })
   finalScore.classList.remove('hide')
+  displayFinalScore();
   resetAlerts(correctAlert, incorrectAlert);
   highScoreInput.classList.remove('hide')
   highScoreInput.classList.add('d-flex')
