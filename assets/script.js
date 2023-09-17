@@ -135,6 +135,8 @@ function startHighScoreInput() {
     nextButton.classList.add('hide');
   }
   progressBarContainer.classList.add('hide');
+  highscoresList.classList.remove('hide');
+  updateHighscores();
 }
 
 function disableAnswerButtons () {
@@ -155,6 +157,42 @@ function resetAlerts (correctAlert, incorrectAlert) {
     incorrectAlert.classList.add('hide');
   } else {};
 }
+
+var highScoreInput = document.querySelector('#highscore-input')
+var initialsInput = document.getElementById('initials')
+var highscoresList = document.querySelector('#highscores-list')
+let highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+
+function updateHighscores() {
+  highscoresList.innerHTML = '';
+
+  highscores.sort((a, b) => b.score - a.score);
+
+  highscores.forEach((entry, index) => {
+    var listItem = document.createElement('li');
+    listItem.textContent = `${index + 1}. ${entry.initials}: ${entry.score}`;
+    highscoresList.appendChild(listItem);
+  });
+}
+
+highScoreInput.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  var initials = initialsInput.value;
+  var score = localStorage.getItem('quizScore');
+
+  highscores.push({ initials, score });
+
+  localStorage.setItem('highscores', JSON.stringify(highscores));
+  initialsInput.value = '';
+  updateHighscores();
+  highScoreInput.classList.remove('d-flex');
+  highScoreInput.classList.add('hide');
+});
+
+
+
+
 
 const questions = [
   {
