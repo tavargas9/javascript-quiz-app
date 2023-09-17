@@ -109,6 +109,9 @@ function startHighScoreInput() {
   highScoreInput.classList.remove('hide')
   highScoreInput.classList.add('d-flex')
   questionEl.innerText = "Add your high score!"
+  if (!nextButton.classList.contains('hide')) {
+    nextButton.classList.add('hide');
+  }
 }
 
 function disableAnswerButtons () {
