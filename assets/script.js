@@ -1,19 +1,23 @@
 var startButton = document.querySelector("#start-btn")
+var nextButton = document.querySelector("#next-btn")
 var answersContainerEl = document.querySelector('#answer-buttons')
 var questionEl = document.querySelector('#question')
 var answerButtonsEl = document.querySelector('#answer-buttons')
+var correctAlert = document.querySelector('#correct-alert')
+var incorrectAlert = document.querySelector('#incorrect-alert')
+var restartQuizButton = document.querySelector('#restart-quiz')
 
 startButton.addEventListener('click', startQuiz)
 
 let shuffledQuestions, currentQuestionIndex
 
 function startQuiz() {
-  console.log("started");
   startButton.classList.add('hide');
   shuffledQuestions = questions.sort(() => Math.random() - .5);
   currentQuestionIndex = 0;
   answersContainerEl.classList.add('d-grid');
   answersContainerEl.classList.remove('hide');
+  restartQuizButton.classList.remove('hide');
   setNextQuetion();
 }
 
@@ -36,10 +40,26 @@ function showQuestion(question) {
   })
 }
 
-function selectAnswer() {
-
+function selectAnswer(event) {
+  const selectedButton = event.target;
+  if (selectedButton.dataset.correct) {
+    selectedButton.classList.add('active');
+    correctAlert.classList.remove('hide');
+    disableAnswerButtons();
+  } else {
+    selectedButton.classList.add('active');
+    incorrectAlert.classList.remove('hide');
+    disableAnswerButtons();
+  }
+  nextButton.classList.remove('hide');
 }
 
+function disableAnswerButtons () {
+  var answerButtons = document.querySelectorAll('.list-group-item', '.list-group-item-action');
+  answerButtons.forEach(button => {
+    button.disabled = true;
+  });
+}
 
 const questions = [
   {
@@ -52,3 +72,7 @@ const questions = [
     ]
   }
 ]
+
+function refreshPage() {
+  location.reload();
+}
