@@ -14,7 +14,7 @@ This is a timed quiz app with questions on basic JavaScript fundamentals.
 
 ## Usage
 
-To open the application, use the deployed url: tavargas9.github.io/javascript-quiz-app/
+To open the application, use the deployed url: [tavargas9.github.io/javascript-quiz-app/](https://tavargas9.github.io/javascript-quiz-app/)
 
 ![demogif](https://github.com/tavargas9/javascript-quiz-app/assets/142061829/3aec9f10-482c-4706-851c-98ea02e6f535)
 
@@ -32,7 +32,7 @@ HTML, Bootstrap, CSS, Javascript
 
 ## Deployed link
 
-tavargas9.github.io/javascript-quiz-app/
+[tavargas9.github.io/javascript-quiz-app/](https://tavargas9.github.io/javascript-quiz-app/)
 
 ## License
 
