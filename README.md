@@ -1,4 +1,4 @@
-# Portfolio
+# Javascript Quiz App
 ![badge](https://img.shields.io/badge/MIT-License-blue.svg)
 
 ## Description
